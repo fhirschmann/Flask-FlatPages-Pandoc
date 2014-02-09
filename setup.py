@@ -29,7 +29,7 @@ setup(
     include_package_data=True,
     install_requires=[
         "Flask",
-        "Flask-FlatPages>=0.6"
+        "Flask-FlatPages"
     ],
     keywords="flask flatpages pandoc latex markdown",
     packages=["flask_flatpages_pandoc"],
