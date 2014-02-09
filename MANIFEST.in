@@ -1,2 +1,3 @@
 recursive-include flask_flatpages_pandoc/css *.css
 include README.rst
+include LICENSE.txt
