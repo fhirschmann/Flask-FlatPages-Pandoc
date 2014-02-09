@@ -26,7 +26,7 @@ setup(
     platforms="any",
     install_requires=[
         "Flask",
-        "Flask-FlatPages"
+        "Flask-FlatPages>=0.6"
     ],
     keywords="flask flatpages pandoc latex markdown",
     packages=["flask_flatpages_pandoc"],
