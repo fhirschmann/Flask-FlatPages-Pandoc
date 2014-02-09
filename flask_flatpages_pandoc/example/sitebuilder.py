@@ -7,12 +7,12 @@ from flask_flatpages_pandoc import FlatPagesPandoc
 DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_ROOT = "content"
-FLATPAGES_EXTENSION = ".Rmd"
+FLATPAGES_EXTENSION = ".md"
 
 app = Flask(__name__)
 app.config.from_object(__name__)
 pages = FlatPages(app)
-FlatPagesPandoc("markdown", app)
+FlatPagesPandoc("markdown", app, ["-s", "--mathjax"])
 
 
 @app.route("/")
