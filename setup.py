@@ -1,3 +1,4 @@
+from os import path
 from setuptools import setup
 
 
@@ -5,6 +6,7 @@ setup(
     name="Flask-FlatPages-Pandoc",
     version="0.1",
     description="Pandoc rendering for Flask-FlatPages",
+    long_description=open(path.join(path.dirname(__file__), "README.rst")).read(),
     url="http://github.com/fhirschmann/Flask-FlatPages-Pandoc",
     author="Fabian Hirschmann",
     author_email="fabian@hirschm.net",
