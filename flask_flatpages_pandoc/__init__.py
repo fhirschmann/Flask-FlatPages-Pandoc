@@ -10,9 +10,13 @@ pandoc as its backend.
 
 """
 from __future__ import print_function
+import pkg_resources
 from subprocess import Popen, PIPE
 
-__version__ = "0.1"
+try:
+    __version__ = pkg_resources.require("Flask-FlatPages-Pandoc")[0]
+except pkg_resources.DistributionNotFound:
+    __version__ = "0.0-dev"
 
 
 class FlatPagesPandoc(object):
