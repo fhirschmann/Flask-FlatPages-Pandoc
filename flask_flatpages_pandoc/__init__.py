@@ -13,6 +13,9 @@ from __future__ import print_function
 import pkg_resources
 from subprocess import Popen, PIPE
 
+from flask import render_template_string, Markup
+
+
 try:
     __version__ = pkg_resources.require("Flask-FlatPages-Pandoc")[0]
 except pkg_resources.DistributionNotFound:
@@ -24,21 +27,25 @@ class FlatPagesPandoc(object):
     Class that, when applied to a :class:`flask.Flask` instance,
     sets up an HTML renderer using pandoc.
     """
-    def __init__(self, source_format, app=None, pandoc_args=[]):
+    def __init__(self, source_format, app=None, pandoc_args=[],
+                 pre_render=True):
         """
         Initializes Flask-FlatPages-KnitrPandoc
 
         :param source_format: the source file format; directly passed
                               to pandoc.
         :type source_format: string
-        :param pandoc_args: extra arguments passed to pandoc
         :param app: your application. Can be omitted if you call
                     :meth:`init_app` later.
         :type app: :class:`flask.Flask`
+        :param pandoc_args: extra arguments passed to pandoc
         :type pandoc_args: sequence
+        :param pre_render: pre-render the page as :class:`flask.Markup`
+        :type pre_render: boolean
         """
         self.source_format = source_format
         self.pandoc_args = pandoc_args
+        self.pre_render = pre_render
 
         if app:
             self.init_app(app)
@@ -68,6 +75,9 @@ class FlatPagesPandoc(object):
         :param page: a page instance
         :type page: :class:`flask_flatpages.Page`
         """
+        if self.pre_render:
+            text = render_template_string(Markup(text))
+
         args = ["pandoc", "-f", self.source_format, "-t", "html"]
         args.extend(self.pandoc_args)
 
