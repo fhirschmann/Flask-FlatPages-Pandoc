@@ -75,8 +75,12 @@ class FlatPagesPandoc(object):
         :param page: a page instance
         :type page: :class:`flask_flatpages.Page`
         """
+        text = text.decode(self.app.config["FLATPAGES_ENCODING"])
+
         if self.pre_render:
             text = render_template_string(Markup(text))
+
+        text = text.encode("utf-8")
 
         args = ["pandoc", "-f", self.source_format, "-t", "html"]
         args.extend(self.pandoc_args)
