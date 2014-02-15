@@ -3,7 +3,7 @@ flask_flatpages_pandoc
 ~~~~~~~~~~~~~~~~~~~~~~
 
 Flask-FlatPages-Pandoc is an HTML renderer for Flask-FlatPages that uses
-pandoc as its backend.
+pandoc as backend.
 
 :copyright: (c) 2014 Fabian Hirschmann <fabian@hirschm.net>
 :license: MIT, see LICENSE.txt for more details.
@@ -30,7 +30,7 @@ class FlatPagesPandoc(object):
     def __init__(self, source_format, app=None, pandoc_args=[],
                  pre_render=True):
         """
-        Initializes Flask-FlatPages-KnitrPandoc
+        Initializes Flask-FlatPages-Pandoc.
 
         :param source_format: the source file format; directly passed
                               to pandoc.
