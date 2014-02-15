@@ -7,8 +7,15 @@ uses pandoc as backend.
 Quickstart
 ``````````
 
-Flask-FlatPages-Pandoc is very easy to set up. Given that you already
-have a Flask application instance, all you have to do is:
+Flask-FlatPages-Pandoc is very easy to set up. First, install
+it using pip:
+
+.. code:: bash
+
+    pip install Flask-FlatPages-Pandoc
+
+Then, given that you already have a Flask application instance,
+all you have to do is:
 
 .. code:: python
 
