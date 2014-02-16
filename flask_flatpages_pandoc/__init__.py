@@ -71,8 +71,6 @@ class FlatPagesPandoc(object):
         :param text: the text of the flat page
         :type text: string
         """
-        text = text.decode(self.app.config["FLATPAGES_ENCODING"])
-
         if self.pre_render:
             text = render_template_string(Markup(text))
 
