@@ -28,7 +28,7 @@ class FlatPagesPandoc(object):
     sets up an HTML renderer using pandoc.
     """
     def __init__(self, source_format, app=None, pandoc_args=[],
-                 pre_render=True):
+                 pre_render=False):
         """
         Initializes Flask-FlatPages-Pandoc.
 
