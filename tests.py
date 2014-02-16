@@ -5,7 +5,6 @@ from shutil import rmtree
 from tempfile import mkdtemp
 from codecs import open
 
-
 from flask import Flask
 from flask_flatpages import FlatPages
 from flask_flatpages_pandoc import FlatPagesPandoc
