@@ -1,8 +1,9 @@
 Flask-FlatPages-Pandoc
 ----------------------
 
-Flask-FlatPages-Pandoc is an HTML renderer for Flask-FlatPages that
-uses pandoc as backend.
+Flask-FlatPages-Pandoc is an HTML renderer for 
+`Flask-FlatPages <https://github.com/SimonSapin/Flask-FlatPages/>`_
+that uses `pandoc <http://johnmacfarlane.net/pandoc/>`_ as backend.
 
 Quickstart
 ``````````
