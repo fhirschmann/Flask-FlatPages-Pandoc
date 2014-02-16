@@ -1,7 +1,9 @@
+# -*- coding: utf-8 -*-
 import unittest
 import os
 from shutil import rmtree
 from tempfile import mkdtemp
+from codecs import open
 
 
 from flask import Flask
@@ -19,7 +21,6 @@ class TestFlatPagesPandoc(unittest.TestCase):
         self.app.config.update(
             FLATPAGES_ROOT=self.content,
             FLATPAGES_AUTO_RELOAD=True,
-            FLATPAGES_EXTENSION=".md",
         )
         self.pages = FlatPages(self.app)
         FlatPagesPandoc("markdown", self.app, pre_render=False)
@@ -27,13 +28,14 @@ class TestFlatPagesPandoc(unittest.TestCase):
     def tearDown(self):
         rmtree(self.tmp)
 
-    def write(self, body, ext="md"):
-        with open(os.path.join(self.content, "test." + ext), "w") as f:
-            f.write(body)
-
-    def html(self):
+    def get(self, body, ext=".md"):
+        self.app.config.update(FLATPAGES_EXTENSION=ext)
+        with open(os.path.join(self.content, "test" + ext), "w", "utf-8") as f:
+            f.write(u"title:test\n\n" + body)
         return self.pages.get("test").html
 
-    def test1(self):
-        self.write("title:test\n\n# test")
-        self.assertEqual(self.html(), '<h1 id="test">test</h1>\n')
+    def test_h1(self):
+        self.assertEqual(self.get("# test"), '<h1 id="test">test</h1>\n')
+
+    def test_unicode(self):
+        self.assertEqual(self.get(u"萬大事都有得解決"), u"<p>萬大事都有得解決</p>\n")
