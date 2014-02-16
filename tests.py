@@ -19,6 +19,7 @@ class TestFlatPagesPandoc(unittest.TestCase):
         self.app = Flask(__name__)
         self.app.config.update(
             FLATPAGES_ROOT=self.content,
+            FLATPAGES_ENCODING="utf-8",
             FLATPAGES_AUTO_RELOAD=True,
         )
         self.pages = FlatPages(self.app)
@@ -27,9 +28,9 @@ class TestFlatPagesPandoc(unittest.TestCase):
     def tearDown(self):
         rmtree(self.tmp)
 
-    def get(self, body, ext=".md"):
+    def get(self, body, ext=".md", enc="utf-8"):
         self.app.config.update(FLATPAGES_EXTENSION=ext)
-        with open(os.path.join(self.content, "test" + ext), "w", "utf-8") as f:
+        with open(os.path.join(self.content, "test" + ext), "w", enc) as f:
             f.write(u"title:test\n\n" + body)
         return self.pages.get("test").html
 
@@ -38,3 +39,7 @@ class TestFlatPagesPandoc(unittest.TestCase):
 
     def test_unicode(self):
         self.assertEqual(self.get(u"萬大事都有得解決"), u"<p>萬大事都有得解決</p>\n")
+
+    def test_unicode2(self):
+        self.app.config.update(FLATPAGES_ENCODING="iso-8859-15")
+        self.assertEqual(self.get(u"äöü", enc="iso-8859-15"), u"<p>äöü</p>\n")
