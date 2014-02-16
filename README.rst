@@ -21,7 +21,7 @@ all you have to do is:
 
     from flask_flatpages_pandoc import FlatPagesPandoc
 
-    FlatPagesPandoc("markdown", app, ["-s", "--mathjax"])
+    FlatPagesPandoc("markdown", app, ["--mathjax"])
 
 
 Links

@@ -12,7 +12,7 @@ FLATPAGES_EXTENSION = ".md"
 app = Flask(__name__)
 app.config.from_object(__name__)
 pages = FlatPages(app)
-FlatPagesPandoc("markdown", app, ["-s", "--mathjax"])
+FlatPagesPandoc("markdown", app, ["--mathjax"])
 
 
 @app.route("/")
