@@ -8,6 +8,18 @@ title: Test Page
 
 #### H4
 
+## Lists
+* one
+* two
+* three
+
+## Horizontal rules
+
+---
+
+## Super/Subscript
+H~2~O is a liquid.  2^10^ is 1024.
+
 ## Flask Links
 <a href="{{ url_for('page', path='test') }}">Link</a>
 
