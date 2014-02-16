@@ -21,6 +21,7 @@ all you have to do is:
 
     from flask_flatpages_pandoc import FlatPagesPandoc
 
+    pages = FlatPages(app)
     FlatPagesPandoc("markdown", app, ["--mathjax"])
 
 
