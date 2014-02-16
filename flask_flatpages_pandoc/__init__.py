@@ -62,18 +62,14 @@ class FlatPagesPandoc(object):
 
         # The following lambda expression works around Flask-FlatPage's
         # reflection magic.
-        self.app.config["FLATPAGES_HTML_RENDERER"] = lambda t, p, m: self.renderer(t, p, m)
+        self.app.config["FLATPAGES_HTML_RENDERER"] = lambda t: self.renderer(t)
 
-    def renderer(self, text, flatpages, page):
+    def renderer(self, text):
         """
         Renders a flat page to HTML.
 
         :param text: the text of the flat page
         :type text: string
-        :param flatpages: a list of flatpages
-        :type flatpages: sequence
-        :param page: a page instance
-        :type page: :class:`flask_flatpages.Page`
         """
         text = text.decode(self.app.config["FLATPAGES_ENCODING"])
 
