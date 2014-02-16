@@ -11,6 +11,9 @@ title: Test Page
 ## Flask Links
 <a href="{{ url_for('page', path='test') }}">Link</a>
 
+## Citations
+@kuhn2013applied have new book on caret.
+
 ## Source Code Highlighting
 #
 ### Python
@@ -30,3 +33,5 @@ $f(x)=\sum_{n=0}^\infty\frac{f^{(n)}(a)}{n!}(x-a)^n$
 
 ## Unicode
 萬大事都有得解決
+
+# References

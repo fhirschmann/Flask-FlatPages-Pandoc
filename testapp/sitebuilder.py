@@ -13,7 +13,9 @@ FLATPAGES_ENCODING = "utf-8"
 app = Flask(__name__)
 app.config.from_object(__name__)
 pages = FlatPages(app)
-FlatPagesPandoc("markdown", app, ["--mathjax"], pre_render=True)
+FlatPagesPandoc("markdown", app,
+                ["--mathjax", "--bibliography", "bibliography.bib"],
+                pre_render=True)
 
 
 @app.route("/")
