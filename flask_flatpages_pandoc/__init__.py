@@ -74,8 +74,6 @@ class FlatPagesPandoc(object):
         if self.pre_render:
             text = render_template_string(Markup(text))
 
-        text = text.encode("utf-8")
-
         args = ["pandoc", "-f", self.source_format, "-t", "html"]
         args.extend(self.pandoc_args)
 
@@ -83,7 +81,7 @@ class FlatPagesPandoc(object):
             print("Executing:", *args, sep=" ")
 
         proc = Popen(args, stdout=PIPE, stdin=PIPE, stderr=PIPE)
-        html, stderr = proc.communicate(text)
+        html, stderr = proc.communicate(text.encode("utf-8"))
 
         if stderr:
             raise ValueError(stderr)
