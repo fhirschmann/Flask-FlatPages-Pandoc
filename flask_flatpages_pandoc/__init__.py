@@ -71,6 +71,9 @@ class FlatPagesPandoc(object):
         :param text: the text of the flat page
         :type text: string
         """
+        if type(text) == str:
+            text = unicode(text, self.app.config["FLATPAGES_ENCODING"])
+
         if self.pre_render:
             text = render_template_string(Markup(text))
 
@@ -81,7 +84,7 @@ class FlatPagesPandoc(object):
             print("Executing:", *args, sep=" ")
 
         proc = Popen(args, stdout=PIPE, stdin=PIPE, stderr=PIPE)
-        html, stderr = proc.communicate(text.encode("utf-8"))
+        html, stderr = proc.communicate(text.encode("utf8"))
 
         if stderr:
             raise ValueError(stderr)
