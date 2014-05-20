@@ -5,7 +5,7 @@ flask_flatpages_pandoc
 Flask-FlatPages-Pandoc is an HTML renderer for Flask-FlatPages that uses
 pandoc as backend.
 
-:copyright: (c) 2014 Fabian Hirschmann <fabian@hirschm.net>
+:copyright: (c) 2014 Fabian Hirschmann <fabian@hirschmann.email>
 :license: MIT, see LICENSE.txt for more details.
 
 """
